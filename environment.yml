@@ -8,3 +8,8 @@ dependencies:
   - pip:
     - openai
     - python-dotenv
+    - composio 
+    - openai-agents
+    - openai-agents[litellm]
+    - litellm
+    - composio-openai-agents
