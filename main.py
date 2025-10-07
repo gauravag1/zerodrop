@@ -40,9 +40,9 @@ def get_weather(city: str):
 async def main():
     agent = Agent(
         name="Assistant",
-        instructions="You only respond in haikus.",
+        instructions="You are a helpful assistant.",
         model=LitellmModel(model=f"ollama/{os.getenv('OLLAMA_MODEL')}", api_key=os.getenv("OLLAMA_API_KEY")),
-        tools=[],
+        tools=[get_weather],
     )
  
     result = await Runner.run(agent, "What's the weather in Tokyo?")
