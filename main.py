@@ -48,8 +48,8 @@ def get_weather(city: str):
 async def main():
     agent = Agent(
         name="Assistant",
-        instructions="You are a helpful assistant. When you get information from a tool, use it immediately to answer the user. Try to include as much information as possible in your response.",
-        model=LitellmModel(model=f"groq/llama-3.3-70b-versatile", api_key=os.getenv("GROQ_API_KEY")),
+        instructions="You are a helpful assistant.",
+        model=LitellmModel(model=f"groq/openai/gpt-oss-20b", api_key=os.getenv("GROQ_API_KEY")),
         tools=[get_weather],
     )
  
