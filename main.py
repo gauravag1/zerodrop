@@ -34,14 +34,22 @@ def get_response(message: str):
 
 @function_tool
 def get_weather(city: str):
+    """Get the current weather conditions for a specified city.
+    
+    Args:
+        city: The name of the city to get weather for
+        
+    Returns:
+        Current weather information including temperature and conditions
+    """
     print(f"[debug] getting weather for {city}")
-    return f"The weather in {city} is sunny."
+    return f"The weather in {city} is currently 22 degrees Celsius and sunny."
 
 async def main():
     agent = Agent(
         name="Assistant",
-        instructions="You are a helpful assistant.",
-        model=LitellmModel(model=f"ollama/{os.getenv('OLLAMA_MODEL')}", api_key=os.getenv("OLLAMA_API_KEY")),
+        instructions="You are a helpful assistant. When you get information from a tool, use it immediately to answer the user. Try to include as much information as possible in your response.",
+        model=LitellmModel(model=f"groq/llama-3.3-70b-versatile", api_key=os.getenv("GROQ_API_KEY")),
         tools=[get_weather],
     )
  
